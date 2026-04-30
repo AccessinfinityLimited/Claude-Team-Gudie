@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code — Cheat Sheet 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E0D0C;--bg2:#151310;--bg3:#1C1916;--bg4:#232019;
+  --border:rgba(218,119,86,.10);--border2:rgba(218,119,86,.22);--border3:rgba(255,255,255,.06);
+  --orange:#DA7756;--orange-l:#F0A07A;--cream:#F0E0CC;
+  --text:#D8CCBF;--muted:#8A7A6E;--dim:#4A3F38;
+  --green:#7DC48E;--blue:#7AAEE0;--purple:#A98FD8;--yellow:#D4B86A;--red:#E07070;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:12.5px;line-height:1.6;min-height:100vh;}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--dim);border-radius:10px;}
+
+/* PROGRESS */
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--orange),var(--orange-l));z-index:999;transition:width .1s;}
+
+/* HEADER */
+.hdr{position:relative;padding:56px 32px 36px;text-align:center;border-bottom:1px solid var(--border);overflow:hidden;}
+.hdr::after{content:'';position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(218,119,86,.15) 0%,transparent 65%);pointer-events:none;}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(218,119,86,.09);border:1px solid rgba(218,119,86,.25);border-radius:100px;padding:4px 14px;font-size:10.5px;font-weight:600;color:var(--orange);letter-spacing:.07em;text-transform:uppercase;margin-bottom:18px;}
+.hdr h1{font-size:44px;font-weight:700;letter-spacing:-1.5px;line-height:1.05;color:var(--cream);margin-bottom:10px;}
+.hdr h1 em{font-style:normal;color:var(--orange);}
+.hdr p{color:var(--muted);font-size:13.5px;margin-bottom:24px;}
+.edition{display:inline-block;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:3px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);}
+
+/* SEARCH */
+.srch-wrap{display:flex;justify-content:center;padding:18px 32px 0;}
+.srch{position:relative;width:100%;max-width:460px;}
+.srch svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);opacity:.4;pointer-events:none;}
+.srch input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:10px 16px 10px 38px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;}
+.srch input:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(218,119,86,.1);}
+.srch input::placeholder{color:var(--dim);}
+
+/* TABS */
+.tabs{display:flex;gap:2px;padding:16px 28px 0;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;background:rgba(14,13,12,.92);backdrop-filter:blur(12px);z-index:90;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{display:flex;align-items:center;gap:6px;padding:9px 15px;border-radius:8px 8px 0 0;border:none;background:transparent;color:var(--muted);font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,background .15s;}
+.tab:hover{color:var(--text);background:var(--bg2);}
+.tab.on{color:var(--orange);border-bottom-color:var(--orange);background:var(--bg2);}
+.tab .ti{font-size:13px;}
+
+/* PANELS */
+.panel{display:none;}.panel.on{display:block;}
+.wrap{padding:22px 26px 56px;max-width:1440px;margin:0 auto;}
+.cols{columns:3;column-gap:14px;}.cols2{columns:2;column-gap:14px;}
+
+/* CARD */
+.card{break-inside:avoid;background:var(--bg2);border:1px solid var(--border3);border-radius:14px;margin-bottom:14px;overflow:hidden;transition:border-color .2s;}
+.card:hover{border-color:var(--border2);}
+.ch{display:flex;align-items:center;gap:10px;padding:12px 16px;background:linear-gradient(135deg,var(--bg3),var(--bg2));border-bottom:1px solid var(--border);}
+.ch .ico{width:28px;height:28px;flex-shrink:0;background:rgba(218,119,86,.1);border:1px solid rgba(218,119,86,.2);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.ch h3{font-size:11.5px;font-weight:600;color:var(--cream);text-transform:uppercase;letter-spacing:.07em;}
+.cb{padding:12px 14px;}
+.gl{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);padding:10px 0 5px;border-bottom:1px solid rgba(218,119,86,.06);margin-bottom:5px;}
+.gl:first-child{padding-top:0;}
+
+/* ROW */
+.row{display:flex;align-items:flex-start;gap:10px;padding:4px 6px;border-radius:6px;transition:background .12s;}
+.row:hover{background:var(--bg3);}
+.lh{flex-shrink:0;display:flex;flex-wrap:wrap;gap:3px;align-items:center;width:136px;}
+.rh{flex:1;font-size:11.5px;color:var(--muted);padding-top:2px;}
+.rh strong{color:var(--text);font-weight:500;}
+.rh code{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);background:rgba(218,119,86,.08);padding:1px 5px;border-radius:3px;}
+
+/* KBD */
+kbd{display:inline-block;background:var(--bg4);border:1px solid rgba(255,255,255,.10);border-bottom-width:2px;border-radius:5px;padding:1px 7px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cream);white-space:nowrap;box-shadow:0 1px 0 rgba(0,0,0,.5);}
+
+/* PILL */
+.p{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;padding:2px 8px;border-radius:5px;white-space:nowrap;line-height:1.6;}
+.po{background:rgba(218,119,86,.10);border:1px solid rgba(218,119,86,.22);color:var(--orange);}
+.pg{background:rgba(125,196,142,.09);border:1px solid rgba(125,196,142,.22);color:var(--green);}
+.pb{background:rgba(122,174,224,.09);border:1px solid rgba(122,174,224,.22);color:var(--blue);}
+.pp{background:rgba(169,143,216,.09);border:1px solid rgba(169,143,216,.22);color:var(--purple);}
+.py{background:rgba(212,184,106,.09);border:1px solid rgba(212,184,106,.22);color:var(--yellow);}
+.pr{background:rgba(224,112,112,.09);border:1px solid rgba(224,112,112,.22);color:var(--red);}
+
+/* CODE BLOCK */
+.cb-code{background:var(--bg);border:1px solid var(--border);border-left:2px solid var(--orange);border-radius:7px;padding:10px 12px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#9A8878;margin:8px 0 4px;line-height:1.85;white-space:pre-wrap;word-break:break-all;}
+.cm{color:var(--dim);}.ck{color:var(--orange);}.cs{color:var(--green);}.cf{color:var(--blue);}
+
+/* TIP / WARN */
+.tip{display:flex;gap:8px;background:rgba(218,119,86,.05);border:1px solid rgba(218,119,86,.15);border-radius:8px;padding:9px 12px;font-size:11px;color:#B88A68;line-height:1.6;margin-top:10px;}
+.tip::before{content:'💡';flex-shrink:0;font-size:13px;margin-top:1px;}
+.warn{display:flex;gap:8px;background:rgba(224,112,112,.05);border:1px solid rgba(224,112,112,.15);border-radius:8px;padding:9px 12px;font-size:11px;color:#B87070;line-height:1.6;margin-top:10px;}
+.warn::before{content:'⚠️';flex-shrink:0;font-size:13px;margin-top:1px;}
+
+/* PERM */
+.perm{display:flex;flex-direction:column;gap:7px;}
+.prow{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;}
+.pbadge{font-size:10px;font-weight:700;padding:2px 10px;border-radius:5px;white-space:nowrap;font-family:'JetBrains Mono',monospace;flex-shrink:0;margin-top:2px;}
+.pnorm{background:rgba(125,196,142,.13);color:var(--green);border:1px solid rgba(125,196,142,.28);}
+.pauto{background:rgba(212,184,106,.13);color:var(--yellow);border:1px solid rgba(212,184,106,.28);}
+.pplan{background:rgba(122,174,224,.13);color:var(--blue);border:1px solid rgba(122,174,224,.28);}
+
+/* HOOK */
+.hitem{display:flex;gap:10px;align-items:flex-start;padding:5px 0;border-bottom:1px solid rgba(218,119,86,.06);}
+.hitem:last-child{border-bottom:none;}
+.hname{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--purple);background:rgba(169,143,216,.09);border:1px solid rgba(169,143,216,.2);border-radius:5px;padding:2px 8px;white-space:nowrap;flex-shrink:0;min-width:118px;}
+.hdesc{font-size:11px;color:var(--muted);padding-top:2px;}
+
+/* VS */
+.vs{display:flex;gap:6px;align-items:center;padding:6px 8px;background:var(--bg3);border-radius:7px;margin-top:10px;flex-wrap:wrap;}
+.vsa{flex:1;font-size:10.5px;color:var(--blue);font-family:'JetBrains Mono',monospace;min-width:80px;}
+.vss{color:var(--dim);font-size:10px;font-weight:700;padding:0 2px;}
+.vsb{flex:1;font-size:10.5px;color:var(--purple);font-family:'JetBrains Mono',monospace;min-width:80px;}
+
+/* FILE MAP */
+.frow{display:flex;gap:8px;padding:3px 6px;border-radius:5px;align-items:flex-start;}
+.frow:hover{background:var(--bg3);}
+.fname{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--green);white-space:nowrap;flex-shrink:0;width:136px;}
+.fdesc{font-size:11px;color:var(--muted);}
+
+/* NEW BADGE */
+.nbadge{display:inline-block;font-size:8px;font-weight:700;padding:1px 5px;background:rgba(122,174,224,.12);border:1px solid rgba(122,174,224,.25);color:var(--blue);border-radius:4px;text-transform:uppercase;letter-spacing:.06em;vertical-align:middle;margin-left:4px;}
+
+/* FLOW */
+.arr{color:var(--dim);font-size:10px;margin:0 2px;}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:12px;font-size:11.5px;}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.cols{columns:2;}}
+@media(max-width:680px){.cols,.cols2{columns:1;}.hdr h1{font-size:30px;}.wrap{padding:14px 14px 40px;}.tabs{padding:10px 14px 0;}.lh{width:110px;}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header class="hdr">
+  <div class="eyebrow">◆ Complete Reference</div>
+  <h1>Claude <em>Code</em> Cheat Sheet</h1>
+  <p>Every command, shortcut & power feature — all in one place</p>
+  <div class="edition">2026 EDITION</div>
+</header>
+
+<div class="srch-wrap">
+  <div class="srch">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#DA7756" stroke-width="1.4"/><path d="M10.5 10.5L14 14" stroke="#DA7756" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <input id="q" type="text" placeholder="Search commands, flags, shortcuts…" oninput="search()">
+  </div>
+</div>
+
+<nav class="tabs" id="tabs">
+  <button class="tab on" data-t="kb"><span class="ti">⌨️</span>Shortcuts</button>
+  <button class="tab" data-t="sl"><span class="ti">⚡</span>Slash Cmds</button>
+  <button class="tab" data-t="cl"><span class="ti">🚀</span>CLI Flags</button>
+  <button class="tab" data-t="b5"><span class="ti">🧩</span>Extension System</button>
+  <button class="tab" data-t="pm"><span class="ti">🛡️</span>Permissions</button>
+  <button class="tab" data-t="hk"><span class="ti">🪝</span>Hooks</button>
+  <button class="tab" data-t="ip"><span class="ti">✨</span>Input Powers</button>
+  <button class="tab" data-t="cf"><span class="ti">⚙️</span>Config</button>
+  <button class="tab" data-t="fm"><span class="ti">📁</span>File Map</button>
+  <button class="tab" data-t="rw"><span class="ti">⏪</span>Rewind</button>
+  <button class="tab" data-t="wf"><span class="ti">🎯</span>Workflow</button>
+  <button class="tab" data-t="cc"><span class="ti">🛠️</span>Custom Cmds</button>
+  <button class="tab" data-t="qr"><span class="ti">📋</span>Quick Ref</button>
+</nav>
+
+<main class="wrap">
+
+<!-- ════════════ KEYBOARD SHORTCUTS ════════════ -->
+<div class="panel on" id="p-kb"><div class="cols">
+
+  <div class="card">
+    <div class="ch"><div class="ico">⌨</div><h3>Essential</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><kbd>Enter</kbd></div><div class="rh">Send message / submit</div></div>
+      <div class="row"><div class="lh"><kbd>Esc</kbd></div><div class="rh">Interrupt / stop generation</div></div>
+      <div class="row"><div class="lh"><kbd>Esc</kbd> <span class="arr">×2</span></div><div class="rh">Open rewind menu — go back in conversation or code</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>C</kbd></div><div class="rh">Cancel current operation (hard stop)</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>D</kbd></div><div class="rh">Exit Claude Code</div></div>
+      <div class="row"><div class="lh"><kbd>Shift</kbd>+<kbd>Tab</kbd></div><div class="rh">Cycle modes: Normal → Auto-Accept → Plan</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🧭</div><h3>Navigation</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>R</kbd></div><div class="rh">Search command history</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>T</kbd></div><div class="rh">Toggle task list</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>O</kbd></div><div class="rh">Toggle verbose transcript</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>G</kbd></div><div class="rh">Open external editor (write long prompts)</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>V</kbd></div><div class="rh">Paste image (screenshots, diagrams)</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>S</kbd></div><div class="rh">Stash current prompt (save for later)</div></div>
+      <div class="row"><div class="lh"><kbd>Cmd</kbd>+<kbd>P</kbd></div><div class="rh">Open model picker (switch models quickly)</div></div>
+      <div class="row"><div class="lh"><kbd>Cmd</kbd>+<kbd>T</kbd></div><div class="rh">Toggle extended thinking</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">✏️</div><h3>Editing & Background</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>A</kbd> / <kbd>E</kbd></div><div class="rh">Jump to start / end of line</div></div>
+      <div class="row"><div class="lh"><kbd>Opt</kbd>+<kbd>F</kbd> / <kbd>B</kbd></div><div class="rh">Word forward / back</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>W</kbd></div><div class="rh">Delete previous word</div></div>
+      <div class="row"><div class="lh"><kbd>\</kbd>+<kbd>Enter</kbd></div><div class="rh">New line without sending</div></div>
+      <div class="row"><div class="lh"><kbd>Ctrl</kbd>+<kbd>B</kbd></div><div class="rh">Send running task to background</div></div>
+    </div>
+    <div style="padding:0 14px 12px;">
+      <div class="tip">Run <code>/terminal-setup</code> to enable Shift+Enter for multi-line input in iTerm2 & VS Code. Run <code>/keybindings</code> to customize all shortcuts.</div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ SLASH COMMANDS ════════════ -->
+<div class="panel" id="p-sl"><div class="cols">
+
+  <div class="card">
+    <div class="ch"><div class="ico">🔄</div><h3>Session Control</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p po">/clear</span></div><div class="rh">Reset conversation history (fresh start)</div></div>
+      <div class="row"><div class="lh"><span class="p po">/compact [hint]</span></div><div class="rh">Compress context to save tokens. Optional hint for what to keep</div></div>
+      <div class="row"><div class="lh"><span class="p po">/rewind</span></div><div class="rh">Go back in conversation AND/OR code changes</div></div>
+      <div class="row"><div class="lh"><span class="p po">/export [file]</span></div><div class="rh">Export conversation to file or clipboard</div></div>
+      <div class="row"><div class="lh"><span class="p po">/cost</span></div><div class="rh">Show session cost & token usage</div></div>
+      <div class="row"><div class="lh"><span class="p po">/usage</span></div><div class="rh">Show plan usage & rate limits</div></div>
+      <div class="row"><div class="lh"><span class="p po">/context</span></div><div class="rh">Token consumption visualization</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">⚙️</div><h3>Configuration</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pb">/config</span></div><div class="rh">Open settings panel</div></div>
+      <div class="row"><div class="lh"><span class="p pb">/model</span></div><div class="rh">Switch between Sonnet / Opus / Haiku</div></div>
+      <div class="row"><div class="lh"><span class="p pb">/permissions</span></div><div class="rh">View & update tool permissions</div></div>
+      <div class="row"><div class="lh"><span class="p pb">/keybindings</span></div><div class="rh">Open keyboard shortcuts config file</div></div>
+      <div class="row"><div class="lh"><span class="p pb">/vim</span></div><div class="rh">Toggle vim mode for input</div></div>
+      <div class="row"><div class="lh"><span class="p pb">/terminal-setup</span></div><div class="rh">Setup Shift+Enter for multi-line input</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">💻</div><h3>Development</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">/init</span></div><div class="rh">Create CLAUDE.md for your project — <strong>do this first!</strong></div></div>
+      <div class="row"><div class="lh"><span class="p pg">/memory</span></div><div class="rh">View & edit CLAUDE.md project memory</div></div>
+      <div class="row"><div class="lh"><span class="p pg">/review</span></div><div class="rh">Code review analysis</div></div>
+      <div class="row"><div class="lh"><span class="p pg">/doctor</span></div><div class="rh">Environment diagnostics & health check</div></div>
+      <div class="row"><div class="lh"><span class="p pg">/agents</span></div><div class="rh">Manage sub-agents</div></div>
+      <div class="row"><div class="lh"><span class="p pg">/mcp</span></div><div class="rh">Manage MCP servers</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🔬</div><h3>Advanced</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pp">/insights</span></div><div class="rh">Generate HTML usage report <span class="nbadge">NEW</span></div></div>
+      <div class="row"><div class="lh"><span class="p pp">/pr_comments</span></div><div class="rh">View GitHub PR feedback</div></div>
+      <div class="row"><div class="lh"><span class="p pp">/install-github-app</span></div><div class="rh">Setup automated PR reviews</div></div>
+      <div class="row"><div class="lh"><span class="p pp">/tasks</span></div><div class="rh">Persistent task list management</div></div>
+      <div class="row"><div class="lh"><span class="p pp">/teleport</span></div><div class="rh">Transfer session between web ↔ local</div></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ CLI FLAGS ════════════ -->
+<div class="panel" id="p-cl"><div class="cols">
+
+  <div class="card">
+    <div class="ch"><div class="ico">▶</div><h3>Starting Sessions</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">claude</span></div><div class="rh">Start interactive session</div></div>
+      <div class="row"><div class="lh"><span class="p pg">claude "query"</span></div><div class="rh">Start with an initial prompt</div></div>
+      <div class="row"><div class="lh"><span class="p pg">claude -p "query"</span></div><div class="rh">Print mode — answer & exit (for scripting)</div></div>
+      <div class="row"><div class="lh"><span class="p pg">claude -c</span></div><div class="rh">Continue last conversation</div></div>
+      <div class="row"><div class="lh"><span class="p pg">claude -r "name"</span></div><div class="rh">Resume specific session by name or ID</div></div>
+      <div class="row"><div class="lh"><span class="p pg">claude -w name</span></div><div class="rh">Start in isolated git worktree</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🤖</div><h3>Model & Behavior</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p po">--model sonnet</span></div><div class="rh">Use Sonnet (fast, cheap)</div></div>
+      <div class="row"><div class="lh"><span class="p po">--model opus</span></div><div class="rh">Use Opus (smartest)</div></div>
+      <div class="row"><div class="lh"><span class="p po">--agent my-agent</span></div><div class="rh">Use a specific sub-agent</div></div>
+      <div class="row"><div class="lh"><span class="p po">--permission-mode plan</span></div><div class="rh">Start in plan mode</div></div>
+      <div class="row"><div class="lh"><span class="p po">--max-turns N</span></div><div class="rh">Limit conversation turns</div></div>
+      <div class="row"><div class="lh"><span class="p po">--max-budget-usd N</span></div><div class="rh">Set max spend limit in USD</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">📂</div><h3>Context & Directories</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p py">--add-dir ../path</span></div><div class="rh">Add extra directories to context</div></div>
+      <div class="row"><div class="lh"><span class="p py">--chrome</span></div><div class="rh">Enable browser integration</div></div>
+      <div class="row"><div class="lh"><span class="p py">--verbose</span></div><div class="rh">Show detailed logging</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🔒</div><h3>Permissions</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pr">--allowedTools</span></div><div class="rh">Whitelist specific tools</div></div>
+      <div class="row"><div class="lh"><span class="p pr">--disallowedTools</span></div><div class="rh">Block specific tools</div></div>
+      <div class="row"><div class="lh"><span class="p pr">--tools "Bash,Edit"</span></div><div class="rh">Restrict to only these tools</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">📤</div><h3>Output Formats <small style="font-size:9px;color:var(--muted);text-transform:none;font-weight:400;">(-p mode only)</small></h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pb">--output-format text</span></div><div class="rh">Plain text (default)</div></div>
+      <div class="row"><div class="lh"><span class="p pb">--output-format json</span></div><div class="rh">Structured JSON output</div></div>
+      <div class="row"><div class="lh"><span class="p pb">--output-format stream-json</span></div><div class="rh">Real-time streaming JSON</div></div>
+      <div class="tip">Pipe data in! <code>git diff | claude -p "review this"</code> or <code>cat error.log | claude -p "explain"</code></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ EXTENSION SYSTEM ════════════ -->
+<div class="panel" id="p-b5"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">📄</div><h3>1. CLAUDE.md — Project Memory</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p po">What</span></div><div class="rh">A markdown file Claude reads every session. Your project's "brain dump" — coding style, architecture, common commands, conventions.</div></div>
+      <div class="row"><div class="lh"><span class="p po">Project</span></div><div class="rh"><code>.claude/CLAUDE.md</code> — committed to git, shared with team</div></div>
+      <div class="row"><div class="lh"><span class="p po">Global</span></div><div class="rh"><code>~/.claude/CLAUDE.md</code> — applies to all projects</div></div>
+      <div class="row"><div class="lh"><span class="p po">Create</span></div><div class="rh">Run <code>/init</code> — Claude generates it for you automatically</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🔧</div><h3>2. Custom Slash Commands</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pp">What</span></div><div class="rh">Your own /commands. Markdown files with prompts that <strong>YOU invoke</strong>. Like reusable prompt templates.</div></div>
+      <div class="row"><div class="lh"><span class="p pp">Project</span></div><div class="rh"><code>.claude/commands/</code></div></div>
+      <div class="row"><div class="lh"><span class="p pp">Global</span></div><div class="rh"><code>~/.claude/commands/</code></div></div>
+      <div class="row"><div class="lh"><span class="p pp">Use</span></div><div class="rh">Filename = command name. <code>review.md</code> → type <code>/project:review</code></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🧠</div><h3>3. Skills — Auto-Invoked Knowledge</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">What</span></div><div class="rh">Like commands, but <strong>Claude decides</strong> when to use them. You DON'T invoke them — Claude detects when they're relevant.</div></div>
+      <div class="row"><div class="lh"><span class="p pg">Where</span></div><div class="rh"><code>.claude/skills/</code> with a <code>SKILL.md</code> inside each skill folder</div></div>
+      <div class="row"><div class="lh"><span class="p pg">Use</span></div><div class="rh">Just work on your project — Claude picks up relevant skills from context</div></div>
+      <div class="vs"><span class="vsa">Custom Commands = YOU invoke</span><span class="vss">VS</span><span class="vsb">Skills = CLAUDE invokes</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🤝</div><h3>4. Sub-Agents — Specialized Helpers</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pb">What</span></div><div class="rh">Separate Claude instances with their own context & role: reviewer, debugger, architect, etc.</div></div>
+      <div class="row"><div class="lh"><span class="p pb">Where</span></div><div class="rh"><code>.claude/agents/</code> — markdown files with YAML metadata</div></div>
+      <div class="row"><div class="lh"><span class="p pb">Invoke</span></div><div class="rh"><code>/agents</code> to manage, or say "Use the reviewer agent"</div></div>
+      <div class="row"><div class="lh"><span class="p pb">CLI</span></div><div class="rh"><code>--agent my-agent</code> or <code>--agents '{json}'</code></div></div>
+      <div class="vs"><span class="vsa">Sub-Agents = Separate instances</span><span class="vss">VS</span><span class="vsb">MCP = External tools</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🔌</div><h3>5. MCP Servers — External Connections</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p py">What</span></div><div class="rh">Connect Claude to external tools: GitHub, Notion, databases, APIs, browsers, etc.</div></div>
+      <div class="row"><div class="lh"><span class="p py">Add</span></div><div class="rh"><code>claude mcp add &lt;name&gt; &lt;command&gt;</code></div></div>
+      <div class="row"><div class="lh"><span class="p py">List</span></div><div class="rh"><code>claude mcp list</code></div></div>
+      <div class="row"><div class="lh"><span class="p py">Config file</span></div><div class="rh"><code>--mcp-config ./mcp.json</code> at launch</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🧩</div><h3>+ Plugins — Community Extensions</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pr">What</span></div><div class="rh">Bundles of commands, skills, hooks & more from the community</div></div>
+      <div class="row"><div class="lh"><span class="p pr">Browse</span></div><div class="rh"><code>/plugin</code> to browse, install, enable, disable</div></div>
+      <div class="row"><div class="lh"><span class="p pr">Local</span></div><div class="rh"><code>--plugin-dir ./my-plugins</code> for local plugins</div></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ PERMISSIONS ════════════ -->
+<div class="panel" id="p-pm"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">🛡</div><h3>Permission Modes</h3></div>
+    <div class="cb">
+      <div class="perm">
+        <div class="prow"><span class="pbadge pnorm">Normal</span><div class="rh">Claude asks permission for every tool use (read, write, bash, etc.). Full control.</div></div>
+        <div class="prow"><span class="pbadge pauto">Auto-Accept</span><div class="rh">Claude runs tools WITHOUT asking. Faster but less control. Good for trusted tasks.</div></div>
+        <div class="prow"><span class="pbadge pplan">Plan Mode</span><div class="rh">Claude ONLY reads & plans. Won't write or run anything. Review first, then switch to Normal to execute.</div></div>
+      </div>
+      <div class="flow">
+        <kbd>Shift+Tab</kbd><span class="arr">→</span>
+        <span style="color:var(--green);font-size:11px;font-weight:600;">Normal</span><span class="arr">→</span>
+        <span style="color:var(--yellow);font-size:11px;font-weight:600;">Auto-Accept</span><span class="arr">→</span>
+        <span style="color:var(--blue);font-size:11px;font-weight:600;">Plan</span><span class="arr">→</span>
+        <span style="color:var(--green);font-size:11px;font-weight:600;">Normal…</span>
+      </div>
+      <div class="tip">Best workflow: Start in Plan Mode to explore & understand the problem. Review Claude's plan. Switch to Normal/Auto-Accept to implement.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">✅</div><h3>Fine-Grained Tool Control</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">Allow git only</span></div><div class="rh">Add <code>"Bash(git:*)"</code> to allowedTools in settings</div></div>
+      <div class="row"><div class="lh"><span class="p pg">Allow all bash</span></div><div class="rh">Add <code>"Bash(*)"</code> to allowedTools</div></div>
+      <div class="row"><div class="lh"><span class="p pr">Block writes</span></div><div class="rh">Add <code>"Write"</code> to disallowedTools</div></div>
+      <div class="row"><div class="lh"><span class="p py">Read-only CLI</span></div><div class="rh"><code>--tools "Read,Glob,Grep"</code></div></div>
+      <div class="cb-code"><span class="cm">// .claude/settings.json</span>
+{
+  <span class="cs">"allowedTools"</span>: [<span class="cs">"Bash(git:*)"</span>, <span class="cs">"Read"</span>],
+  <span class="cs">"disallowedTools"</span>: [<span class="cs">"Write"</span>]
+}</div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ HOOKS ════════════ -->
+<div class="panel" id="p-hk"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">🪝</div><h3>Hook Events</h3></div>
+    <div class="cb">
+      <div class="hitem"><span class="hname">PreToolUse</span><div class="hdesc">Runs BEFORE Claude uses a tool — validate, block, or modify inputs</div></div>
+      <div class="hitem"><span class="hname">PostToolUse</span><div class="hdesc">Runs AFTER a tool — check results, auto-format, lint</div></div>
+      <div class="hitem"><span class="hname">UserPromptSubmit</span><div class="hdesc">Before your message is processed by Claude</div></div>
+      <div class="hitem"><span class="hname">Stop</span><div class="hdesc">When Claude finishes generating a response</div></div>
+      <div class="hitem"><span class="hname">SessionStart</span><div class="hdesc">When a new session begins</div></div>
+      <div class="hitem"><span class="hname">SessionEnd</span><div class="hdesc">When a session ends</div></div>
+      <div class="hitem"><span class="hname">PreCompact</span><div class="hdesc">Before context compression happens</div></div>
+      <div class="hitem"><span class="hname">Notification</span><div class="hdesc">When Claude sends a notification</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">💡</div><h3>Hook Config Example</h3></div>
+    <div class="cb">
+      <div class="cb-code"><span class="cm">// .claude/settings.json</span>
+{
+  <span class="cs">"hooks"</span>: {
+    <span class="cs">"PostToolUse"</span>: [{
+      <span class="cs">"matcher"</span>: <span class="cs">"Write"</span>,
+      <span class="cs">"hooks"</span>: [{
+        <span class="cs">"type"</span>: <span class="cs">"command"</span>,
+        <span class="cs">"command"</span>: <span class="cs">"prettier --write ."</span>
+      }]
+    }],
+    <span class="cs">"Stop"</span>: [{
+      <span class="cs">"hooks"</span>: [{
+        <span class="cs">"type"</span>: <span class="cs">"command"</span>,
+        <span class="cs">"command"</span>: <span class="cs">"osascript -e 'display notification \"Claude done\"'"</span>
+      }]
+    }]
+  }
+}</div>
+      <div class="tip">Auto-run <code>prettier</code> after every file edit, or block writes to <code>.env</code> files. Configure in your settings JSON.</div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ INPUT POWERS ════════════ -->
+<div class="panel" id="p-ip"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">✨</div><h3>Input Superpowers</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p po">@ mention</span></div><div class="rh">Type <code>@</code> to reference files & folders. Claude reads them into context.</div></div>
+      <div class="row"><div class="lh"><span class="p po">! prefix</span></div><div class="rh">Type <code>!</code> to run shell commands inline. E.g., <code>! git status</code></div></div>
+      <div class="row"><div class="lh"><span class="p po">Paste images</span></div><div class="rh"><kbd>Ctrl</kbd>+<kbd>V</kbd> to paste screenshots, diagrams, error images directly</div></div>
+      <div class="row"><div class="lh"><span class="p po">Pipe input</span></div><div class="rh"><code>cat file.py | claude -p "explain"</code> — feed data directly</div></div>
+      <div class="row"><div class="lh"><span class="p po">Multi-dir</span></div><div class="rh"><code>claude --add-dir ../api ../web</code> — work across multiple projects</div></div>
+      <div class="row"><div class="lh"><span class="p po">Worktrees</span></div><div class="rh"><code>claude -w feature</code> — isolated git branch + Claude session</div></div>
+      <div class="tip">Use <code>@</code> references instead of copy-pasting file contents — smarter with context and uses fewer tokens.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">💻</div><h3>Power Examples</h3></div>
+    <div class="cb">
+      <div class="cb-code"><span class="cm"># Reference a file directly</span>
+@src/auth.ts what's causing the bug?
+
+<span class="cm"># Run a shell command inline</span>
+! git log --oneline -10
+
+<span class="cm"># Pipe + explain</span>
+cat error.log | claude -p "what's wrong?"
+
+<span class="cm"># Review git diff</span>
+git diff | claude -p "review these changes"
+
+<span class="cm"># Multi-project context</span>
+claude --add-dir ../api --add-dir ../web
+
+<span class="cm"># Isolated worktree session</span>
+claude -w feature-auth</div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ CONFIG ════════════ -->
+<div class="panel" id="p-cf"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">📊</div><h3>Settings Priority (highest → lowest)</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pr">Enterprise</span></div><div class="rh"><code>/etc/claude-code/managed-settings.json</code></div></div>
+      <div class="row"><div class="lh"><span class="p po">Project Local</span></div><div class="rh"><code>.claude/settings.local.json</code> — your personal project settings (gitignored)</div></div>
+      <div class="row"><div class="lh"><span class="p py">Project Shared</span></div><div class="rh"><code>.claude/settings.json</code> — committed to git, shared with team</div></div>
+      <div class="row"><div class="lh"><span class="p pg">User Global</span></div><div class="rh"><code>~/.claude/settings.json</code> — your personal defaults</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🖥</div><h3>Config CLI Commands</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">config list</span></div><div class="rh"><code>claude config list</code> — show all current settings</div></div>
+      <div class="row"><div class="lh"><span class="p pg">config get</span></div><div class="rh"><code>claude config get key</code> — check a specific value</div></div>
+      <div class="row"><div class="lh"><span class="p pg">config set</span></div><div class="rh"><code>claude config set key value</code> — change a value</div></div>
+      <div class="row"><div class="lh"><span class="p pg">config add</span></div><div class="rh"><code>claude config add key value</code> — add to an array</div></div>
+      <div class="tip">Permissions example: Allow git commands without asking — add <code>"Bash(git:*)"</code> to your allowedTools in settings.</div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ FILE MAP ════════════ -->
+<div class="panel" id="p-fm"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">📁</div><h3>Project Level — .claude/</h3></div>
+    <div class="cb">
+      <div class="frow"><span class="fname">CLAUDE.md</span><div class="fdesc">Project memory — conventions, architecture, commands</div></div>
+      <div class="frow"><span class="fname">settings.json</span><div class="fdesc">Shared project settings (committed to git)</div></div>
+      <div class="frow"><span class="fname">settings.local.json</span><div class="fdesc">Your personal settings (gitignored)</div></div>
+      <div class="frow"><span class="fname">commands/</span><div class="fdesc">Project slash commands (*.md files)</div></div>
+      <div class="frow"><span class="fname">skills/</span><div class="fdesc">Project skills (folders each with SKILL.md inside)</div></div>
+      <div class="frow"><span class="fname">agents/</span><div class="fdesc">Project sub-agents (*.md files)</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🏠</div><h3>Global Level — ~/.claude/</h3></div>
+    <div class="cb">
+      <div class="frow"><span class="fname">CLAUDE.md</span><div class="fdesc">Global memory — applies to ALL projects</div></div>
+      <div class="frow"><span class="fname">settings.json</span><div class="fdesc">Global settings and defaults</div></div>
+      <div class="frow"><span class="fname">commands/</span><div class="fdesc">Personal global slash commands</div></div>
+      <div class="frow"><span class="fname">skills/</span><div class="fdesc">Personal global skills</div></div>
+      <div class="frow"><span class="fname">keybindings.json</span><div class="fdesc">Custom keyboard shortcuts</div></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ REWIND ════════════ -->
+<div class="panel" id="p-rw"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">⏪</div><h3>How to Rewind</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><kbd>Esc</kbd> <span class="arr">×2</span></div><div class="rh">Open rewind menu anywhere in the session</div></div>
+      <div class="row"><div class="lh"><span class="p po">/rewind</span></div><div class="rh">Same as above but typed as a slash command</div></div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:7px;">
+        <div class="prow"><span class="pbadge pnorm">Conversation</span><div class="rh">Go back in chat only. Code files stay as-is.</div></div>
+        <div class="prow"><span class="pbadge pplan">Code</span><div class="rh">Restore files only. Conversation history stays.</div></div>
+        <div class="prow"><span class="pbadge pauto">Full Rewind</span><div class="rh">Restore both conversation AND code to a specific point.</div></div>
+      </div>
+      <div class="warn">Bash side-effects (database changes, API calls, files deleted via <code>rm</code>) can't be rewound. Checkpoints only track file edits by Claude. Use Git for permanent safety.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">💾</div><h3>Staying Safe</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">Auto-checkpoints</span></div><div class="rh">Rewind checkpoints are auto-created before each Claude action — you can always go back</div></div>
+      <div class="row"><div class="lh"><span class="p pg">Git safety net</span></div><div class="rh">Commit to git before Claude makes sweeping changes — permanent undo</div></div>
+      <div class="row"><div class="lh"><span class="p py">Worktrees</span></div><div class="rh"><code>claude -w feature</code> — isolated branch means zero risk to main</div></div>
+      <div class="row"><div class="lh"><span class="p py">Plan first</span></div><div class="rh">Use Plan Mode to review before any writes — prevents needing to rewind</div></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ WORKFLOW ════════════ -->
+<div class="panel" id="p-wf"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">🚀</div><h3>Starting a New Project</h3></div>
+    <div class="cb">
+      <div class="cb-code"><span class="ck">cd</span> project <span class="ck">&&</span> claude
+<span class="cm"># Inside Claude:</span>
+/init
+<span class="cm"># Edit the generated CLAUDE.md, then start coding!</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🎯</div><h3>The Plan → Execute Pattern ⭐</h3></div>
+    <div class="cb">
+      <div class="flow">
+        <kbd>Shift+Tab</kbd><span class="arr">→</span>
+        <span style="color:var(--blue);font-weight:600;">Plan Mode</span><span class="arr">→</span>
+        Describe what you want<span class="arr">→</span>
+        Review plan<span class="arr">→</span>
+        <kbd>Shift+Tab</kbd><span class="arr">→</span>
+        <span style="color:var(--green);font-weight:600;">Normal/Auto</span><span class="arr">→</span>
+        ✓ Execute
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">💰</div><h3>Saving Money & Tokens</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p po">/compact</span></div><div class="rh">When context gets big, compress it. Saves tokens dramatically.</div></div>
+      <div class="row"><div class="lh"><span class="p po">/clear</span></div><div class="rh">Between unrelated tasks. Don't carry irrelevant context.</div></div>
+      <div class="row"><div class="lh"><span class="p py">Use Sonnet</span></div><div class="rh">For routine tasks. Save Opus for complex architecture decisions.</div></div>
+      <div class="row"><div class="lh"><span class="p pg">Use @ refs</span></div><div class="rh">Instead of pasting code — smarter context management.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">🐛</div><h3>Debugging Like a Pro</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pr">Paste errors</span></div><div class="rh">Copy-paste the full error message. Claude parses stack traces brilliantly.</div></div>
+      <div class="row"><div class="lh"><span class="p pr">Paste screenshots</span></div><div class="rh"><kbd>Ctrl</kbd>+<kbd>V</kbd> a screenshot of the bug. Claude sees it.</div></div>
+      <div class="row"><div class="lh"><span class="p pr">Pipe logs</span></div><div class="rh"><code>cat error.log | claude -p "what's wrong?"</code></div></div>
+      <div class="row"><div class="lh"><span class="p pr">/doctor</span></div><div class="rh">If something feels broken, run this first.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">⚡</div><h3>Parallel Development</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pb">Worktrees</span></div><div class="rh"><code>claude -w feature-auth</code> — isolated branch + session</div></div>
+      <div class="row"><div class="lh"><span class="p pb">Multiple dirs</span></div><div class="rh"><code>--add-dir ../api ../web</code> — work across repos</div></div>
+      <div class="row"><div class="lh"><span class="p pb">Background</span></div><div class="rh"><kbd>Ctrl</kbd>+<kbd>B</kbd> sends a task to background so you can start another</div></div>
+      <div class="row"><div class="lh"><span class="p pb">Agent Teams</span></div><div class="rh">Multiple Claude instances collaborating <span class="nbadge">NEW</span></div></div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ CUSTOM COMMANDS ════════════ -->
+<div class="panel" id="p-cc"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">🛠</div><h3>Creating Custom Commands</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">1. Create file</span></div><div class="rh"><code>.claude/commands/review.md</code></div></div>
+      <div class="row"><div class="lh"><span class="p pg">2. Write prompt</span></div><div class="rh">The markdown content IS the prompt Claude will use</div></div>
+      <div class="row"><div class="lh"><span class="p pg">3. Use it</span></div><div class="rh">Type <code>/project:review</code> in Claude Code</div></div>
+      <div class="cb-code"><span class="cm"># .claude/commands/fix.md</span>
+<span class="cs">---
+argument-hint: "filename or description"
+description: "Fix a bug in the specified file"
+allowed-tools: ["Read", "Write", "Bash"]
+---</span>
+
+Fix the bug: <span class="ck">$ARGUMENTS</span>
+
+Steps:
+1. Read the relevant file
+2. Identify the root cause
+3. Write a failing test first
+4. Fix the code and verify</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">📝</div><h3>YAML Frontmatter Options</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pb">argument-hint</span></div><div class="rh">Placeholder text shown for argument input</div></div>
+      <div class="row"><div class="lh"><span class="p pb">description</span></div><div class="rh">Shows in /help listing</div></div>
+      <div class="row"><div class="lh"><span class="p pb">allowed-tools</span></div><div class="rh">Restrict what tools the command can use</div></div>
+      <div class="row"><div class="lh"><span class="p pb">model</span></div><div class="rh">Force a specific model for this command</div></div>
+      <div style="margin-top:12px;padding:10px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);margin-bottom:5px;">$ARGUMENTS</div>
+        <div style="font-size:11.5px;color:var(--muted);">Use <code>$ARGUMENTS</code> in your markdown — it gets replaced with whatever you type after the command name.</div>
+        <div style="margin-top:6px;font-size:11px;color:var(--dim);">Example: <code>/project:review src/auth.ts</code> → <code>$ARGUMENTS</code> = <span style="color:var(--green);">"src/auth.ts"</span></div>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- ════════════ QUICK REF ════════════ -->
+<div class="panel" id="p-qr"><div class="cols2">
+
+  <div class="card">
+    <div class="ch"><div class="ico">📋</div><h3>Daily Essentials</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pg">Start project</span></div><div class="rh"><code>cd project && claude</code></div></div>
+      <div class="row"><div class="lh"><span class="p pg">Continue last</span></div><div class="rh"><code>claude -c</code></div></div>
+      <div class="row"><div class="lh"><span class="p pg">Quick question</span></div><div class="rh"><code>claude -p "how do I..."</code></div></div>
+      <div class="row"><div class="lh"><span class="p pg">Review changes</span></div><div class="rh"><code>git diff | claude -p "review"</code></div></div>
+      <div class="row"><div class="lh"><span class="p pg">Explain error</span></div><div class="rh"><code>cat error.log | claude -p "explain"</code></div></div>
+      <div class="row"><div class="lh"><span class="p pg">Check cost</span></div><div class="rh">Type <code>/cost</code> anytime</div></div>
+      <div class="row"><div class="lh"><span class="p pg">Undo mistake</span></div><div class="rh"><kbd>Esc</kbd> <span class="arr">×2</span> → rewind</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ico">⚡</div><h3>Power Moves</h3></div>
+    <div class="cb">
+      <div class="row"><div class="lh"><span class="p pp">Parallel sessions</span></div><div class="rh"><code>claude -w feature-a</code> + <code>claude -w feature-b</code></div></div>
+      <div class="row"><div class="lh"><span class="p pp">Custom agent</span></div><div class="rh">Create <code>.claude/agents/reviewer.md</code></div></div>
+      <div class="row"><div class="lh"><span class="p pp">Auto-format</span></div><div class="rh">PostToolUse hook → run prettier</div></div>
+      <div class="row"><div class="lh"><span class="p pp">Remote session</span></div><div class="rh"><code>claude --remote "fix the bug"</code></div></div>
+      <div class="row"><div class="lh"><span class="p pp">Transfer local</span></div><div class="rh"><code>claude --teleport</code></div></div>
+      <div class="row"><div class="lh"><span class="p pp">Budget limit</span></div><div class="rh"><code>claude -p --max-budget-usd 2 "query"</code></div></div>
+      <div class="row"><div class="lh"><span class="p pp">Script + JSON</span></div><div class="rh"><code>claude -p --output-format json "query" | jq</code></div></div>
+    </div>
+  </div>
+
+</div></div>
+
+</main>
+
+<script>
+// PROGRESS BAR
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('bar').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+
+// TABS
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+    btn.classList.add('on');
+    document.getElementById('p-'+btn.dataset.t).classList.add('on');
+    window.scrollTo({top:document.querySelector('.tabs').offsetTop-4,behavior:'smooth'});
+  });
+});
+
+// SEARCH
+function search(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const allTabs=document.querySelectorAll('.tab');
+  const allPanels=document.querySelectorAll('.panel');
+
+  if(!q){
+    allTabs.forEach(b=>{b.style.display='';b.classList.remove('on');});
+    allPanels.forEach(p=>p.classList.remove('on'));
+    document.querySelector('.tab[data-t="kb"]').classList.add('on');
+    document.getElementById('p-kb').classList.add('on');
+    document.querySelectorAll('.card').forEach(c=>{c.style.display='';});
+    document.querySelectorAll('.row,.hitem,.prow,.frow').forEach(r=>r.style.opacity='1');
+    return;
+  }
+
+  allTabs.forEach(b=>b.style.display='none');
+  allPanels.forEach(p=>p.classList.add('on'));
+
+  document.querySelectorAll('.card').forEach(card=>{
+    const items=card.querySelectorAll('.row,.hitem,.prow,.frow');
+    const headerMatch=card.querySelector('.ch h3')?.textContent.toLowerCase().includes(q);
+    let anyHit=headerMatch;
+    items.forEach(item=>{
+      const match=item.textContent.toLowerCase().includes(q);
+      item.style.opacity=match?'1':'0.12';
+      if(match) anyHit=true;
+    });
+    if(headerMatch) items.forEach(r=>r.style.opacity='1');
+    card.style.display=anyHit?'':'none';
+  });
+}
+</script>
+</body>
+</html>
