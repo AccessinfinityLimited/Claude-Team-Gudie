@@ -473,12 +473,44 @@
   <!-- Progress -->
   <div class="progress">
     <div class="progress-step"><div class="num">1</div> Claude</div>
-    <div class="progress-step"><div class="line"></div><div class="num">2</div> Git</div>
-    <div class="progress-step"><div class="line"></div><div class="num">3</div> GitHub</div>
-    <div class="progress-step"><div class="line"></div><div class="num">4</div> GitHub CLI</div>
-    <div class="progress-step"><div class="line"></div><div class="num">5</div> CLAUDE.md</div>
-    <div class="progress-step"><div class="line"></div><div class="num">6</div> Firebase</div>
-    <div class="progress-step"><div class="line"></div><div class="num">7</div> Workflow</div>
+    <div class="progress-step"><div class="line"></div><div class="num">2</div> GitHub</div>
+    <div class="progress-step"><div class="line"></div><div class="num">3</div> Git & GitHub CLI</div>
+    <div class="progress-step"><div class="line"></div><div class="num">4</div> CLAUDE.md</div>
+    <div class="progress-step"><div class="line"></div><div class="num">5</div> Firebase</div>
+    <div class="progress-step"><div class="line"></div><div class="num">6</div> Workflow</div>
+  </div>
+
+  <!-- Prerequisites -->
+  <div style="margin-bottom:40px; animation: fadeUp 0.6s 0.15s ease both;">
+    <h3 style="font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--navy); margin-bottom:14px; text-align:center; letter-spacing:0.02em;">📋 Prerequisites Required</h3>
+    <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+
+      <div style="display:flex; align-items:center; gap:12px; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:14px 22px; box-shadow:0 2px 10px rgba(30,58,95,0.07); min-width:200px; flex:1; max-width:260px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🤖</div>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Claude</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">AI assistant access</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:14px 22px; box-shadow:0 2px 10px rgba(30,58,95,0.07); min-width:200px; flex:1; max-width:260px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#F3F4F6;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🐙</div>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">GitHub</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">Version control & code repo</div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:14px 22px; box-shadow:0 2px 10px rgba(30,58,95,0.07); min-width:200px; flex:1; max-width:260px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:#FEF9C3;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🔥</div>
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Firebase</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px;">Database & deployment</div>
+          <div style="font-size:11px;color:#C2410C;margin-top:5px;display:flex;align-items:center;gap:4px;"><span>⚠️</span> @accessinfinity.com Gmail account required</div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <!-- Sections -->
@@ -504,34 +536,10 @@
       </div>
     </div>
 
-    <!-- 2. Git -->
+    <!-- 2. GitHub Account -->
     <div class="section">
       <div class="section-header" onclick="toggle(this)">
         <div class="step-num c2">2</div>
-        <div class="step-title">
-          <h2>Install Git</h2>
-          <p>Version control — required for all code operations</p>
-        </div>
-        <span class="step-icon">›</span>
-      </div>
-      <div class="section-body">
-        <a class="link-btn" href="https://git-scm.com/downloads" target="_blank">⬇ git-scm.com/downloads</a>
-        <div class="tip info" style="margin-top:14px">
-          <span class="tip-icon">💻</span>
-          <span>The link above opens the Git downloads page. <strong>Choose the installer for your operating system</strong> — Windows, Mac, or Linux — before downloading.</span>
-        </div>
-        <ul class="steps" style="margin-top:14px">
-          <li><span class="bullet"></span>Select your OS (Windows / macOS / Linux) on the downloads page</li>
-          <li><span class="bullet"></span>Download and run the installer — click through all defaults</li>
-          <li><span class="bullet"></span>Restart your terminal when done</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 3. GitHub -->
-    <div class="section">
-      <div class="section-header" onclick="toggle(this)">
-        <div class="step-num c3">3</div>
         <div class="step-title">
           <h2>Set Up GitHub Account</h2>
           <p>Use the invite from Prasad — @accessinfinity.com only</p>
@@ -552,13 +560,13 @@
       </div>
     </div>
 
-    <!-- 4. GitHub CLI -->
+    <!-- 3. Install Git & GitHub CLI -->
     <div class="section">
       <div class="section-header" onclick="toggle(this)">
-        <div class="step-num c4">4</div>
+        <div class="step-num c3">3</div>
         <div class="step-title">
-          <h2>Install GitHub CLI &amp; Authenticate</h2>
-          <p>Homebrew → gh install → login</p>
+          <h2>Install Git &amp; GitHub CLI &amp; Authenticate</h2>
+          <p>Install Git, then GitHub CLI — run commands for your OS</p>
         </div>
         <span class="step-icon">›</span>
       </div>
@@ -567,31 +575,88 @@
           <span class="tip-icon">ℹ️</span>
           <span>Run these commands one at a time in your <strong>Terminal</strong> (Mac) or <strong>Command Prompt</strong> (Windows).</span>
         </div>
-        <div class="code-block" style="margin-top:14px">
+
+        <!-- Git Install -->
+        <p style="margin-top:20px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--navy); border-bottom:1px solid var(--border); padding-bottom:8px;">Step 1 — Install Git</p>
+        <a class="link-btn" href="https://git-scm.com/downloads" target="_blank" style="margin-top:12px;">⬇ git-scm.com/downloads</a>
+        <div class="tip info" style="margin-top:12px">
+          <span class="tip-icon">💻</span>
+          <span><strong>Choose the installer for your operating system</strong> — Windows, Mac, or Linux — before downloading.</span>
+        </div>
+        <ul class="steps" style="margin-top:12px">
+          <li><span class="bullet"></span>Select your OS (Windows / macOS / Linux) on the downloads page</li>
+          <li><span class="bullet"></span>Download and run the installer — click through all defaults</li>
+          <li><span class="bullet"></span>Restart your terminal when done</li>
+        </ul>
+        <div class="tip warn" style="margin-top:12px">
+          <span class="tip-icon">🪟</span>
+          <span><strong>Windows users — extra step required.</strong> After installing Git, open <strong>Command Prompt</strong> and run these commands to set your global identity.</span>
+        </div>
+        <div class="code-block" style="margin-top:12px">
           <div class="code-top">
-            <span>Terminal</span>
+            <span>Command Prompt — Windows</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><span class="comment"># Step 1 — Install Homebrew (Mac only)</span>
+          <pre><span class="comment"># Set your name</span>
+<span class="cmd">git config</span> <span class="flag">--global</span> user.name <span class="str">"Your Name"</span>
+
+<span class="comment"># Set your work email</span>
+<span class="cmd">git config</span> <span class="flag">--global</span> user.email <span class="str">"your_email@example.com"</span>
+
+<span class="comment"># Verify your settings</span>
+<span class="cmd">git config</span> <span class="flag">--global --list</span></pre>
+        </div>
+        <div class="tip good" style="margin-top:10px">
+          <span class="tip-icon">✅</span>
+          <span>Replace <strong>"Your Name"</strong> and <strong>"your_email@example.com"</strong> with your <strong>@accessinfinity.com</strong> email. The last command confirms your settings are saved.</span>
+        </div>
+
+        <!-- GitHub CLI -->
+        <p style="margin-top:24px; font-family:'Syne',sans-serif; font-size:14px; font-weight:700; color:var(--navy); border-bottom:1px solid var(--border); padding-bottom:8px;">Step 2 — Install GitHub CLI &amp; Authenticate</p>
+
+        <p style="margin-top:14px; font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--navy);">🍎 macOS</p>
+        <div class="code-block" style="margin-top:10px">
+          <div class="code-top">
+            <span>Terminal — macOS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="comment"># Install Homebrew</span>
 <span class="cmd">/bin/bash</span> <span class="flag">-c</span> <span class="str">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span>
 
-<span class="comment"># Step 2 — Install GitHub CLI</span>
+<span class="comment"># Install GitHub CLI</span>
 <span class="cmd">brew install gh</span>
 
-<span class="comment"># Step 3 — Log in to GitHub</span>
+<span class="comment"># Log in to GitHub</span>
 <span class="cmd">gh auth login</span></pre>
+        </div>
+
+        <p style="margin-top:16px; font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--navy);">🪟 Windows</p>
+        <div class="code-block" style="margin-top:10px">
+          <div class="code-top">
+            <span>Command Prompt — Windows</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="comment"># Install GitHub CLI using winget (built into Windows 10/11)</span>
+<span class="cmd">winget install</span> <span class="flag">--id</span> GitHub.cli
+
+<span class="comment"># Restart Command Prompt, then log in to GitHub</span>
+<span class="cmd">gh auth login</span></pre>
+        </div>
+        <div class="tip warn" style="margin-top:12px">
+          <span class="tip-icon">⚠️</span>
+          <span><strong>Windows users:</strong> After running <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px;color:var(--text)">winget install</code>, <strong>close and reopen</strong> your Command Prompt before running <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px;color:var(--text)">gh auth login</code>.</span>
         </div>
         <div class="tip good" style="margin-top:12px">
           <span class="tip-icon">✅</span>
-          <span>When prompted by <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">gh auth login</code> — choose <strong>GitHub.com → HTTPS → Login with a web browser</strong> and follow the steps.</span>
+          <span>When prompted by <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px;color:var(--text)">gh auth login</code> — choose <strong>GitHub.com → HTTPS → Login with a web browser</strong> and follow the steps.</span>
         </div>
       </div>
     </div>
 
-    <!-- 5. CLAUDE.md -->
+    <!-- 4. CLAUDE.md -->
     <div class="section">
       <div class="section-header" onclick="toggle(this)">
-        <div class="step-num c5">5</div>
+        <div class="step-num c4">4</div>
         <div class="step-title">
           <h2>Download CLAUDE.md</h2>
           <p>Configuration file — save to your project folder</p>
@@ -599,7 +664,7 @@
         <span class="step-icon">›</span>
       </div>
       <div class="section-body" style="padding-top:16px">
-        <a class="link-btn" href="https://accessinfinityuk-my.sharepoint.com/personal/chandrashekhar_accessinfinity_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fchandrashekhar%5Faccessinfinity%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files%2FCLAUDE%2Emd&parent=%2Fpersonal%2Fchandrashekhar%5Faccessinfinity%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files&ga=1" target="_blank">⬇ Download CLAUDE.md from OneDrive</a>
+        <a class="link-btn" href="https://accessinfinityuk-my.sharepoint.com/:t:/g/personal/charikshith_accessinfinity_com/IQBeqg_CKoIPS7xOKwnsOi46ARu8PSuKVb7iDYvV9yTbxIo?e=XNVxL6" target="_blank">⬇ Download CLAUDE.md from OneDrive</a>
         <ul class="steps" style="margin-top:12px">
           <li><span class="bullet"></span>Click the link above to open OneDrive</li>
           <li><span class="bullet"></span>Download the <strong>CLAUDE.md</strong> file</li>
@@ -608,10 +673,10 @@
       </div>
     </div>
 
-    <!-- 6. Firebase -->
+    <!-- 5. Firebase -->
     <div class="section">
       <div class="section-header" onclick="toggle(this)">
-        <div class="step-num c6">6</div>
+        <div class="step-num c5">5</div>
         <div class="step-title">
           <h2>Set Up Firebase</h2>
           <p>Wait for Prasad's invite — then install &amp; login</p>
@@ -619,6 +684,10 @@
         <span class="step-icon">›</span>
       </div>
       <div class="section-body">
+        <div class="tip info" style="margin-top:12px">
+          <span class="tip-icon">📋</span>
+          <span><strong>Prerequisite:</strong> An <strong>@accessinfinity.com</strong> Google / Gmail account is required before proceeding. This will be sent to you by Prasad.</span>
+        </div>
         <div class="tip warn" style="margin-top:12px">
           <span class="tip-icon">⚠️</span>
           <span><strong>Do not create your own Google account.</strong> Wait for the invite from <strong>Prasad</strong> and use that account only.</span>
@@ -642,10 +711,10 @@
       </div>
     </div>
 
-    <!-- 7. Daily Workflow -->
+    <!-- 6. Daily Workflow -->
     <div class="section">
       <div class="section-header" onclick="toggle(this)">
-        <div class="step-num c7">7</div>
+        <div class="step-num c6">6</div>
         <div class="step-title">
           <h2>Daily Git &amp; Firebase Workflow</h2>
           <p>Pull → push → deploy — do this every day</p>
@@ -653,27 +722,69 @@
         <span class="step-icon">›</span>
       </div>
       <div class="section-body">
-        <div class="tip good" style="margin-top:12px">
-          <span class="tip-icon">💡</span>
-          <span>Good habit: Always <strong>pull first → make changes → push → deploy</strong>. Never push without pulling first to avoid conflicts.</span>
+
+        <!-- Tab bar -->
+        <div style="display:flex; gap:8px; margin-top:16px; border-bottom:2px solid var(--border); padding-bottom:0;">
+          <button onclick="switchTab(this,'tab-nondev')" class="tab-btn tab-active" style="padding:9px 20px; border:none; background:none; font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--accent); border-bottom:2px solid var(--accent); margin-bottom:-2px; cursor:pointer; border-radius:6px 6px 0 0; transition:all 0.2s;">👤 Non Developers</button>
+          <button onclick="switchTab(this,'tab-dev')" class="tab-btn" style="padding:9px 20px; border:none; background:none; font-family:'Syne',sans-serif; font-size:13px; font-weight:700; color:var(--muted); border-bottom:2px solid transparent; margin-bottom:-2px; cursor:pointer; border-radius:6px 6px 0 0; transition:all 0.2s;">👨‍💻 Developers</button>
         </div>
-        <div class="workflow-grid" style="margin-top:16px">
-          <div class="wf-card wf1">
-            <h4 style="color:#1D4ED8">⬇ Pull Latest Code</h4>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Always start here — get the latest version from remote.</p>
-            <code>git pull origin main</code>
-          </div>
-          <div class="wf-card wf2">
-            <h4 style="color:#15803D">⬆ Push Your Changes</h4>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Stage, commit, and push your work.</p>
-            <code>git add .<br>git commit -m "message"<br>git push origin main</code>
-          </div>
-          <div class="wf-card wf3">
-            <h4 style="color:#C2410C">🚀 Deploy to Firebase</h4>
-            <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Ship the latest code live after pushing.</p>
-            <code>firebase deploy</code>
+
+        <!-- Non Developers Tab -->
+        <div id="tab-nondev" class="tab-panel" style="display:block;">
+          <div style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+
+            <div style="display:flex; align-items:center; gap:16px; background:var(--white); border:1px solid #BFDBFE; border-radius:14px; padding:18px 20px; box-shadow:0 1px 6px rgba(30,58,95,0.06);">
+              <div style="width:36px;height:36px;border-radius:10px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#1D4ED8;flex-shrink:0;">1</div>
+              <div>
+                <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Get Latest Code</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:3px;">Ask your developer to pull the latest version of the code before any changes are made.</div>
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:16px; background:var(--white); border:1px solid #BBF7D0; border-radius:14px; padding:18px 20px; box-shadow:0 1px 6px rgba(30,58,95,0.06);">
+              <div style="width:36px;height:36px;border-radius:10px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#15803D;flex-shrink:0;">2</div>
+              <div>
+                <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Push Latest Code</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:3px;">Once changes are ready, your developer will push the updated code to the main repository.</div>
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:16px; background:var(--white); border:1px solid #FED7AA; border-radius:14px; padding:18px 20px; box-shadow:0 1px 6px rgba(30,58,95,0.06);">
+              <div style="width:36px;height:36px;border-radius:10px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#C2410C;flex-shrink:0;">3</div>
+              <div>
+                <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Deploy in Firebase</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:3px;">Your developer will deploy the latest code to Firebase. You'll receive a link to access the live app.</div>
+              </div>
+            </div>
+
           </div>
         </div>
+
+        <!-- Developers Tab -->
+        <div id="tab-dev" class="tab-panel" style="display:none;">
+          <div class="tip good" style="margin-top:16px">
+            <span class="tip-icon">💡</span>
+            <span>Good habit: Always <strong>pull first → make changes → push → deploy</strong>. Never push without pulling first to avoid conflicts.</span>
+          </div>
+          <div class="workflow-grid" style="margin-top:16px">
+            <div class="wf-card wf1">
+              <h4 style="color:#1D4ED8">⬇ Get latest code from remote</h4>
+              <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Always start here — get the latest version from remote.</p>
+              <code>git pull origin main</code>
+            </div>
+            <div class="wf-card wf2">
+              <h4 style="color:#15803D">⬆ Push the latest code to remote main</h4>
+              <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Stage, commit, and push your work.</p>
+              <code>git add .<br>git commit -m "message"<br>git push origin main</code>
+            </div>
+            <div class="wf-card wf3">
+              <h4 style="color:#C2410C">🚀 firebase deploy latest code</h4>
+              <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Ship the latest code live after pushing.</p>
+              <code>firebase deploy</code>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -718,6 +829,39 @@
     </div>
   </div>
 
+  <!-- Contacts -->
+  <div style="margin-top:48px; animation: fadeUp 0.6s 0.4s ease both;">
+    <h3 style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px; color:var(--navy);">📞 Contacts</h3>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">Reach out to any of the team below for help with access or setup.</p>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+
+      <div style="display:flex; align-items:center; gap:16px; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:16px 20px; box-shadow:0 1px 6px rgba(30,58,95,0.06);">
+        <div style="width:40px;height:40px;border-radius:12px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#1D4ED8;flex-shrink:0;">P</div>
+        <div style="flex:1;">
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Prasad</div>
+          <a href="mailto:prasadnimmalapudi@accessinfinity.com" style="font-size:13px;color:var(--accent);text-decoration:none;">prasadnimmalapudi@accessinfinity.com</a>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:16px; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:16px 20px; box-shadow:0 1px 6px rgba(30,58,95,0.06);">
+        <div style="width:40px;height:40px;border-radius:12px;background:#CCFBF1;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#0F766E;flex-shrink:0;">C</div>
+        <div style="flex:1;">
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Chandrashekhar</div>
+          <a href="mailto:chandrashekhar@accessinfinity.com" style="font-size:13px;color:var(--accent);text-decoration:none;">chandrashekhar@accessinfinity.com</a>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:16px; background:var(--white); border:1px solid var(--border); border-radius:14px; padding:16px 20px; box-shadow:0 1px 6px rgba(30,58,95,0.06);">
+        <div style="width:40px;height:40px;border-radius:12px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#6D28D9;flex-shrink:0;">C</div>
+        <div style="flex:1;">
+          <div style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--navy);">Charikshith</div>
+          <a href="mailto:charikshith@accessinfinity.com" style="font-size:13px;color:var(--accent);text-decoration:none;">charikshith@accessinfinity.com</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer>
     <p>💬 Need help? Contact <strong>Prasad</strong> for GitHub &amp; Firebase invites, or reach out in the team channel.</p>
@@ -730,6 +874,18 @@
   function toggle(header) {
     const section = header.closest('.section');
     section.classList.toggle('open');
+  }
+
+  function switchTab(btn, tabId) {
+    const body = btn.closest('.section-body');
+    body.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+    body.querySelectorAll('.tab-btn').forEach(b => {
+      b.style.color = 'var(--muted)';
+      b.style.borderBottom = '2px solid transparent';
+    });
+    document.getElementById(tabId).style.display = 'block';
+    btn.style.color = 'var(--accent)';
+    btn.style.borderBottom = '2px solid var(--accent)';
   }
 
   function copyCode(btn) {
