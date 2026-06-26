@@ -4,22 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Team Quick Start Guide — Access Infinity</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --accent: #2563EB;
-    --teal:   #0D9488;
-    --orange: #EA7316;
-    --green:  #059669;
-    --red:    #DC2626;
-    --navy:   #1E3A5F;
-    --body:   #F0F4FA;
-    --white:  #FFFFFF;
-    --card:   #FFFFFF;
-    --border: #DDE4F0;
-    --text:   #1A2540;
-    --muted:  #6B7FAA;
-    --soft:   #EEF2FB;
+    --accent: #D97757;      /* Claude coral */
+    --accent-deep: #BE5A3D; /* hover/active coral */
+    --teal:   #4A8C7A;
+    --orange: #D97757;
+    --green:  #5A8266;
+    --red:    #C0432F;
+    --navy:   #1F1E1D;      /* near-black, warm */
+    --body:   #F0EEE6;      /* Claude cream */
+    --white:  #FAF9F5;      /* card cream */
+    --card:   #FAF9F5;
+    --border: #E2DFD4;      /* warm beige border */
+    --text:   #1F1E1D;
+    --muted:  #6E6B66;      /* warm gray */
+    --soft:   #ECE9DD;      /* deeper cream for soft bg */
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +28,7 @@
   body {
     background: var(--body);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -38,8 +39,8 @@
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 55% 35% at 90% 5%,  rgba(37,99,235,0.08)  0%, transparent 60%),
-      radial-gradient(ellipse 45% 30% at 5%  90%,  rgba(13,148,136,0.07) 0%, transparent 55%);
+      radial-gradient(ellipse 55% 35% at 90% 5%,  rgba(217,119,87,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 30% at 5%  90%, rgba(74,140,122,0.07) 0%, transparent 55%);
     pointer-events: none;
     z-index: 0;
   }
@@ -47,9 +48,21 @@
   .wrap {
     position: relative;
     z-index: 1;
-    max-width: 900px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 60px 32px 80px;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .layout { grid-template-columns: 1fr; }
+    .side-nav { position: static !important; }
   }
 
   /* ── Header ── */
@@ -75,7 +88,7 @@
     border: 1px solid var(--border);
     border-radius: 100px;
     padding: 7px 16px;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--muted);
@@ -89,7 +102,7 @@
   }
 
   header h1 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: clamp(32px, 5vw, 52px);
     font-weight: 800;
     line-height: 1.1;
@@ -122,7 +135,7 @@
     align-items: center;
     gap: 4px;
     font-size: 11px;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-weight: 600;
     color: var(--muted);
     letter-spacing: 0.05em;
@@ -131,8 +144,8 @@
   .progress-step .num {
     width: 24px; height: 24px;
     border-radius: 50%;
-    background: rgba(37,99,235,0.1);
-    border: 1.5px solid rgba(37,99,235,0.3);
+    background: rgba(217,119,87,0.1);
+    border: 1.5px solid rgba(217,119,87,0.3);
     display: flex; align-items: center; justify-content: center;
     font-size: 10px;
     color: var(--accent);
@@ -151,7 +164,7 @@
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--white);
-    box-shadow: 0 2px 12px rgba(30,58,95,0.06);
+    box-shadow: 0 2px 12px rgba(50,40,30,0.05);
     animation: fadeUp 0.5s ease both;
   }
 
@@ -179,7 +192,7 @@
     width: 40px; height: 40px;
     border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: 15px;
     font-weight: 800;
     flex-shrink: 0;
@@ -188,7 +201,7 @@
   .step-title { flex: 1; }
 
   .step-title h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: 17px;
     font-weight: 700;
     margin-bottom: 2px;
@@ -224,11 +237,11 @@
     gap: 8px;
     padding: 10px 18px;
     border-radius: 10px;
-    background: rgba(37,99,235,0.08);
-    border: 1px solid rgba(37,99,235,0.25);
+    background: rgba(217,119,87,0.08);
+    border: 1px solid rgba(217,119,87,0.25);
     color: var(--accent);
     text-decoration: none;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: 13px;
     font-weight: 600;
     margin: 16px 0 8px;
@@ -236,10 +249,10 @@
   }
 
   .link-btn:hover {
-    background: rgba(37,99,235,0.14);
+    background: rgba(217,119,87,0.14);
     border-color: var(--accent);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+    box-shadow: 0 4px 12px rgba(217,119,87,0.15);
   }
 
   /* ── Steps List ── */
@@ -252,28 +265,28 @@
   }
 
   .steps li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    position: relative;
+    padding-left: 18px;
     font-size: 14.5px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--text);
   }
 
   .steps li .bullet {
+    position: absolute;
+    left: 0;
+    top: 9px;
     width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--accent);
-    flex-shrink: 0;
-    margin-top: 7px;
   }
 
   /* ── Code Block ── */
   .code-block {
     margin-top: 16px;
     border-radius: 14px;
-    background: #1E2A45;
-    border: 1px solid #2E3F60;
+    background: #262522;
+    border: 1px solid #3A3733;
     overflow: hidden;
   }
 
@@ -282,45 +295,45 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px 16px;
-    background: rgba(255,255,255,0.05);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
   .code-top span {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: #8A9CC8;
+    color: #9C9489;
   }
 
   .copy-btn {
     background: none;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.12);
     border-radius: 6px;
-    color: #8A9CC8;
+    color: #9C9489;
     font-size: 11px;
     padding: 3px 10px;
     cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
     transition: all 0.2s;
   }
 
-  .copy-btn:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
-  .copy-btn.copied { color: #0D9488; border-color: #0D9488; }
+  .copy-btn:hover { color: #fff; border-color: rgba(255,255,255,0.35); }
+  .copy-btn.copied { color: #E8A88A; border-color: #E8A88A; }
 
   .code-block pre {
     padding: 18px 20px;
     font-family: 'JetBrains Mono', monospace;
     font-size: 13px;
     line-height: 1.7;
-    color: #c8d8ff;
+    color: #E8E4DC;
     overflow-x: auto;
     white-space: pre;
   }
 
-  .code-block pre .comment { color: #4a5e8a; }
-  .code-block pre .cmd     { color: #5EEAD4; }
-  .code-block pre .flag    { color: #FBA264; }
-  .code-block pre .str     { color: #a5d6a7; }
+  .code-block pre .comment { color: #7A7268; }
+  .code-block pre .cmd     { color: #E8A88A; }
+  .code-block pre .flag    { color: #C8B179; }
+  .code-block pre .str     { color: #9CB89C; }
 
   /* ── Tip Box ── */
   .tip {
@@ -355,11 +368,11 @@
     padding: 18px;
     border: 1px solid var(--border);
     background: var(--white);
-    box-shadow: 0 1px 6px rgba(30,58,95,0.06);
+    box-shadow: 0 1px 6px rgba(50,40,30,0.05);
   }
 
   .wf-card h4 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: 13px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -394,7 +407,7 @@
     text-align: left;
     padding: 10px 14px;
     background: var(--soft);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Fraunces', serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -445,6 +458,93 @@
   .c5 { background: #FEE2E2; color: #B91C1C; }
   .c6 { background: #FEF9C3; color: #A16207; }
   .c7 { background: #E0F2FE; color: #0369A1; }
+  .c8 { background: #F3E8FF; color: #7E22CE; }
+
+  /* ── Side Nav ── */
+  .side-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 2px 12px rgba(50,40,30,0.05);
+    position: sticky;
+    top: 32px;
+    animation: fadeUp 0.6s 0.05s ease both;
+  }
+
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: transparent;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.18s;
+    text-align: left;
+    letter-spacing: 0.01em;
+  }
+
+  .tab-btn .tab-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+    transition: background 0.18s;
+  }
+
+  .tab-btn:hover {
+    color: var(--navy);
+    background: var(--soft);
+  }
+
+  .tab-btn.active {
+    background: var(--accent);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(217,119,87,0.25);
+  }
+
+  .tab-btn.active .tab-dot { background: var(--white); }
+
+  .new-badge {
+    margin-left: auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--white);
+    padding: 2px 7px;
+    border-radius: 100px;
+    line-height: 1.4;
+  }
+
+  .tab-btn.active .new-badge {
+    background: var(--white);
+    color: var(--accent);
+  }
+
+  .nav-label {
+    font-family: 'Fraunces', serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 14px 14px 6px;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
 
   .wf1 { background: #EFF6FF; border-color: #BFDBFE; }
   .wf2 { background: #F0FDF4; border-color: #BBF7D0; }
@@ -462,13 +562,31 @@
   <!-- Header -->
   <header>
     <div class="logo-row">
-      <div class="logo-pill"><span class="dot" style="background:#4A7FFF"></span> Claude</div>
-      <div class="logo-pill"><span class="dot" style="background:#333"></span> GitHub</div>
-      <div class="logo-pill"><span class="dot" style="background:#FFA000"></span> Firebase</div>
+      <div class="logo-pill"><span class="dot" style="background:#D97757"></span> Claude</div>
+      <div class="logo-pill"><span class="dot" style="background:#1F1E1D"></span> GitHub</div>
+      <div class="logo-pill"><span class="dot" style="background:#E8A88A"></span> Firebase</div>
     </div>
     <h1>Team <span>Quick Start</span> Guide</h1>
     <p>Follow each section in order &nbsp;·&nbsp; Takes 20–30 minutes</p>
   </header>
+
+  <!-- Layout: side nav + content -->
+  <div class="layout">
+
+  <!-- Side Nav -->
+  <nav class="side-nav">
+    <button class="tab-btn active" onclick="showTab(this, 'quick-start')"><span class="tab-dot"></span> Quick Start</button>
+    <div class="nav-label">Claude Skills</div>
+    <button class="tab-btn" onclick="showTab(this, 'streamlit-app')"><span class="tab-dot"></span> /streamlit-app <span class="new-badge">new</span></button>
+    <button class="tab-btn" onclick="showTab(this, 'firebase-poc-scaffold')"><span class="tab-dot"></span> /firebase-poc-scaffold <span class="new-badge">new</span></button>
+    <button class="tab-btn" onclick="showTab(this, 'firebase-app-review')"><span class="tab-dot"></span> /firebase-app-review <span class="new-badge">new</span></button>
+  </nav>
+
+  <!-- Content -->
+  <div class="tab-content">
+
+  <!-- Quick Start Tab -->
+  <div class="tab-panel active" id="quick-start">
 
   <!-- Progress -->
   <div class="progress">
@@ -683,7 +801,7 @@
   <div style="margin-top:48px; animation: fadeUp 0.6s 0.35s ease both;">
     <h3 style="font-family:'Syne',sans-serif; font-size:18px; font-weight:700; margin-bottom:4px; color:var(--navy);">✅ Verify Everything Works</h3>
     <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">Run these commands in your terminal to confirm each tool is installed.</p>
-    <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(30,58,95,0.06);">
+    <div style="border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(50,40,30,0.05);">
       <table class="verify-table">
         <thead>
           <tr>
@@ -718,6 +836,247 @@
     </div>
   </div>
 
+  </div><!-- /quick-start panel -->
+
+  <!-- Skill: streamlit-app -->
+  <div class="tab-panel" id="streamlit-app">
+    <div style="margin-bottom:24px;">
+      <h2 style="font-family:'Syne',sans-serif; font-size: clamp(26px, 4vw, 36px); font-weight:800; color:var(--navy); letter-spacing:-0.02em; margin-bottom:8px;">
+        <span style="color:var(--accent);">/streamlit-app</span>
+      </h2>
+      <p style="color:var(--muted); font-size:15px;">Turn any Python script into a clean Streamlit web app.</p>
+    </div>
+
+    <div class="tip good" style="margin-bottom:18px">
+      <span class="tip-icon">✅</span>
+      <span><strong>No install needed.</strong> Enabled for every <strong>@accessinfinity.com</strong> account in Claude Desktop. Just type <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">/streamlit-app</code> and your request.</span>
+    </div>
+
+    <div class="section open">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="step-num c1">i</div>
+        <div class="step-title">
+          <h2>What it does</h2>
+          <p>Python script → usable web app, no Streamlit knowledge needed</p>
+        </div>
+        <span class="step-icon">›</span>
+      </div>
+      <div class="section-body">
+        <ul class="steps" style="margin-top:18px">
+          <li><span class="bullet"></span>Wraps a Python script in a usable web UI — no Streamlit knowledge needed.</li>
+          <li><span class="bullet"></span>Always follows the same shape: <strong>Input → Process → Output → Download</strong>.</li>
+          <li><span class="bullet"></span>Keeps your original logic as plain functions; adds validation, spinners, and friendly errors by default.</li>
+          <li><span class="bullet"></span>Best for: file-upload → process → download tools, dashboards, sharing scripts with non-coders.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section open">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="step-num c1">→</div>
+        <div class="step-title">
+          <h2>How to use it</h2>
+          <p>Four steps from script to running app</p>
+        </div>
+        <span class="step-icon">›</span>
+      </div>
+      <div class="section-body">
+        <ul class="steps" style="margin-top:18px">
+          <li><span class="bullet"></span>Open <strong>Claude Desktop</strong> and a folder containing your Python script.</li>
+          <li><span class="bullet"></span>Type <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">/streamlit-app</code> followed by what you want.</li>
+          <li><span class="bullet"></span>Review the plan Claude proposes (inputs, outputs, downloads) and confirm.</li>
+          <li><span class="bullet"></span>Run the generated app with the two commands below.</li>
+        </ul>
+
+        <div class="code-block" style="margin-top:16px">
+          <div class="code-top">
+            <span>Example prompts</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="cmd">/streamlit-app</span> <span class="str">Turn sales_report.py into an app where I can upload a CSV and download the report.</span>
+
+<span class="cmd">/streamlit-app</span> <span class="str">Build an app that takes a PDF, extracts tables, and lets me download them as Excel.</span>
+
+<span class="cmd">/streamlit-app</span> <span class="str">Make a small UI for the forecast() function in model.py.</span></pre>
+        </div>
+
+        <div class="code-block" style="margin-top:12px">
+          <div class="code-top">
+            <span>Run the generated app</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="cmd">pip install</span> <span class="flag">-r</span> requirements.txt
+<span class="cmd">streamlit run</span> app.py</pre>
+        </div>
+
+        <div class="tip info" style="margin-top:14px">
+          <span class="tip-icon">💡</span>
+          <span><strong>Tip:</strong> Tell Claude who will use it ("for the ops team, not engineers") and list inputs/outputs upfront — saves a round of clarifying questions.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill: firebase-poc-scaffold -->
+  <div class="tab-panel" id="firebase-poc-scaffold">
+    <div style="margin-bottom:24px;">
+      <h2 style="font-family:'Syne',sans-serif; font-size: clamp(26px, 4vw, 36px); font-weight:800; color:var(--navy); letter-spacing:-0.02em; margin-bottom:8px;">
+        <span style="color:var(--accent);">/firebase-poc-scaffold</span>
+      </h2>
+      <p style="color:var(--muted); font-size:15px;">Spin up a new POC on the standard React + Firebase stack.</p>
+    </div>
+
+    <div class="tip good" style="margin-bottom:18px">
+      <span class="tip-icon">✅</span>
+      <span><strong>No install needed.</strong> Enabled for every <strong>@accessinfinity.com</strong> account in Claude Desktop. Just type <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">/firebase-poc-scaffold</code> and your request.</span>
+    </div>
+
+    <div class="section open">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="step-num c3">i</div>
+        <div class="step-title">
+          <h2>What it does</h2>
+          <p>One known-good baseline for every new prototype</p>
+        </div>
+        <span class="step-icon">›</span>
+      </div>
+      <div class="section-body">
+        <ul class="steps" style="margin-top:18px">
+          <li><span class="bullet"></span>Scaffolds a fresh POC app on the company's standard stack: <strong>React (Vite + TS), Tailwind, shadcn/ui, Firebase</strong> (Auth, Firestore, Functions, Storage).</li>
+          <li><span class="bullet"></span>Wires the <strong>Firebase Emulator Suite</strong> so you can build locally with no cloud project.</li>
+          <li><span class="bullet"></span>Includes routing with React Router, lazy-loaded pages, and a <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">ProtectedRoute</code> wrapper.</li>
+          <li><span class="bullet"></span>Auth model: <strong>email/password</strong> against the emulator locally; switches to <strong>Microsoft (Azure AD)</strong> auth once you connect a real Firebase project.</li>
+          <li><span class="bullet"></span>Best for: starting any new prototype, demo, or MVP — so every project follows the same layout.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section open">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="step-num c3">→</div>
+        <div class="step-title">
+          <h2>How to use it</h2>
+          <p>From zero to a running local app</p>
+        </div>
+        <span class="step-icon">›</span>
+      </div>
+      <div class="section-body">
+        <ul class="steps" style="margin-top:18px">
+          <li><span class="bullet"></span>Make sure the Quick Start tab tools are installed (Node 18+, Git, Firebase CLI).</li>
+          <li><span class="bullet"></span>Open <strong>Claude Desktop</strong> in the parent folder where you want the new project to live.</li>
+          <li><span class="bullet"></span>Type <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">/firebase-poc-scaffold</code> and tell Claude the app name (e.g. "task-tracker").</li>
+          <li><span class="bullet"></span>Claude checks prerequisites, scaffolds the project, and runs lint + build to verify it's clean.</li>
+          <li><span class="bullet"></span>Start local dev with <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">npm run dev:full</code> — it boots Vite + the emulators together.</li>
+        </ul>
+
+        <div class="code-block" style="margin-top:16px">
+          <div class="code-top">
+            <span>Example prompts</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="cmd">/firebase-poc-scaffold</span> <span class="str">Create a new POC called "task-tracker".</span>
+
+<span class="cmd">/firebase-poc-scaffold</span> <span class="str">Spin up a fresh demo app for the sales team — emulator-only for now.</span>
+
+<span class="cmd">/firebase-poc-scaffold</span> <span class="str">Bootstrap a new app and wire it to my existing Firebase project.</span></pre>
+        </div>
+
+        <div class="code-block" style="margin-top:12px">
+          <div class="code-top">
+            <span>Run locally after scaffold</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="cmd">npm run dev:full</span>   <span class="comment"># Vite + Firebase emulators</span>
+<span class="comment"># Open the app:           http://localhost:5173</span>
+<span class="comment"># Open the Emulator UI:   http://localhost:4000</span>
+<span class="comment"># Test login:             test@example.com / password123</span></pre>
+        </div>
+
+        <div class="tip warn" style="margin-top:14px">
+          <span class="tip-icon">⚠️</span>
+          <span><strong>Secrets:</strong> <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">VITE_FIREBASE_*</code> values go in <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">.env.local</code> (git-ignored). Sensitive third-party keys (Stripe, SendGrid, etc.) belong in <strong>Firebase Secret Manager</strong>, never in a <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">VITE_</code> var.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skill: firebase-app-review -->
+  <div class="tab-panel" id="firebase-app-review">
+    <div style="margin-bottom:24px;">
+      <h2 style="font-family:'Syne',sans-serif; font-size: clamp(26px, 4vw, 36px); font-weight:800; color:var(--navy); letter-spacing:-0.02em; margin-bottom:8px;">
+        <span style="color:var(--accent);">/firebase-app-review</span>
+      </h2>
+      <p style="color:var(--muted); font-size:15px;">Run a full review of a Firebase app — code + browser.</p>
+    </div>
+
+    <div class="tip good" style="margin-bottom:18px">
+      <span class="tip-icon">✅</span>
+      <span><strong>No install needed.</strong> Enabled for every <strong>@accessinfinity.com</strong> account in Claude Desktop. Just type <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">/firebase-app-review</code> and your request.</span>
+    </div>
+
+    <div class="section open">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="step-num c2">i</div>
+        <div class="step-title">
+          <h2>What it does</h2>
+          <p>One checklist, same bar for every Firebase app</p>
+        </div>
+        <span class="step-icon">›</span>
+      </div>
+      <div class="section-body">
+        <ul class="steps" style="margin-top:18px">
+          <li><span class="bullet"></span>Reviews any Firebase app built on the standard stack against the same checklist every time, so nothing important slips through.</li>
+          <li><span class="bullet"></span>Two modes: <strong>static code review</strong> (a file/component or the whole app) and <strong>live browser test</strong> (drives a running app, watches console + network).</li>
+          <li><span class="bullet"></span>Leads with security: open Firestore rules, missing ownership checks, leaked secrets, broken auth — flagged as <strong>Critical / High</strong>.</li>
+          <li><span class="bullet"></span>Reports findings in a fixed structure (Summary → Findings by severity → What looks good → Next steps) — easy to scan and compare across apps.</li>
+          <li><span class="bullet"></span>Best for: before a demo, after a big change, or any time you want a second pair of eyes on a POC.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section open">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="step-num c2">→</div>
+        <div class="step-title">
+          <h2>How to use it</h2>
+          <p>Point Claude at what to review and read the report</p>
+        </div>
+        <span class="step-icon">›</span>
+      </div>
+      <div class="section-body">
+        <ul class="steps" style="margin-top:18px">
+          <li><span class="bullet"></span>Open <strong>Claude Desktop</strong> in your project folder.</li>
+          <li><span class="bullet"></span>Type <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">/firebase-app-review</code> and tell Claude what to look at: a file, a component, the whole app, or a URL.</li>
+          <li><span class="bullet"></span>For a browser test, start your app first (<code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">npm run dev:full</code>) so Claude can drive it at <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">http://localhost:5173</code>.</li>
+          <li><span class="bullet"></span>Read the report top to bottom — fix anything <strong>Critical</strong> or <strong>High</strong> before sharing the app.</li>
+        </ul>
+
+        <div class="code-block" style="margin-top:16px">
+          <div class="code-top">
+            <span>Example prompts</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="comment"># Review a specific file</span>
+<span class="cmd">/firebase-app-review</span> <span class="str">Look at src/lib/firebase.ts and firestore.rules.</span>
+
+<span class="comment"># Full review (static + browser)</span>
+<span class="cmd">/firebase-app-review</span> <span class="str">Do a full review of this app before tomorrow's demo.</span>
+
+<span class="comment"># Live browser test only</span>
+<span class="cmd">/firebase-app-review</span> <span class="str">Test the app running at http://localhost:5173 — try sign-up, the main flow, and sign-out.</span></pre>
+        </div>
+
+        <div class="tip warn" style="margin-top:14px">
+          <span class="tip-icon">⚠️</span>
+          <span><strong>The #1 thing this catches:</strong> Firestore rules left as <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">allow read, write: if true</code>. A POC with open rules is the most common and most damaging issue — always run this before sharing a link.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /tab-content -->
+  </div><!-- /layout -->
+
   <!-- Footer -->
   <footer>
     <p>💬 Need help? Contact <strong>Prasad</strong> for GitHub &amp; Firebase invites, or reach out in the team channel.</p>
@@ -740,6 +1099,13 @@
       btn.classList.add('copied');
       setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
     });
+  }
+
+  function showTab(btn, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(id).classList.add('active');
   }
 
   // Open first section by default is handled by .open class
