@@ -594,8 +594,8 @@
     <div class="progress-step"><div class="line"></div><div class="num">2</div> Git</div>
     <div class="progress-step"><div class="line"></div><div class="num">3</div> GitHub</div>
     <div class="progress-step"><div class="line"></div><div class="num">4</div> GitHub CLI</div>
-    <div class="progress-step"><div class="line"></div><div class="num">5</div> CLAUDE.md</div>
-    <div class="progress-step"><div class="line"></div><div class="num">6</div> Firebase</div>
+    <div class="progress-step"><div class="line"></div><div class="num">5</div> Firebase</div>
+    <div class="progress-step"><div class="line"></div><div class="num">6</div> Scaffold</div>
     <div class="progress-step"><div class="line"></div><div class="num">7</div> Workflow</div>
   </div>
 
@@ -675,29 +675,52 @@
       <div class="section-header" onclick="toggle(this)">
         <div class="step-num c4">4</div>
         <div class="step-title">
-          <h2>Install GitHub CLI &amp; Authenticate</h2>
-          <p>Homebrew → gh install → login</p>
+          <h2>Set up Git &amp; GitHub CLI</h2>
+          <p>Configure identity → install gh → login</p>
         </div>
         <span class="step-icon">›</span>
       </div>
       <div class="section-body">
         <div class="tip info" style="margin-top:12px">
           <span class="tip-icon">ℹ️</span>
-          <span>Run these commands one at a time in your <strong>Terminal</strong> (Mac) or <strong>Command Prompt</strong> (Windows).</span>
+          <span>Run these commands one at a time in your <strong>Terminal</strong> (Mac) or <strong>Command Prompt / PowerShell</strong> (Windows).</span>
         </div>
+
         <div class="code-block" style="margin-top:14px">
           <div class="code-top">
-            <span>Terminal</span>
+            <span>Step 1 — Configure your Git identity (both OSes)</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><span class="comment"># Step 1 — Install Homebrew (Mac only)</span>
+          <pre><span class="cmd">git config</span> <span class="flag">--global</span> user.name <span class="str">"Your Name"</span>
+<span class="cmd">git config</span> <span class="flag">--global</span> user.email <span class="str">"your.email@accessinfinity.com"</span></pre>
+        </div>
+
+        <div class="code-block" style="margin-top:12px">
+          <div class="code-top">
+            <span>Step 2a — Install GitHub CLI (Mac)</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="comment"># Install Homebrew if you don't have it</span>
 <span class="cmd">/bin/bash</span> <span class="flag">-c</span> <span class="str">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span>
 
-<span class="comment"># Step 2 — Install GitHub CLI</span>
-<span class="cmd">brew install gh</span>
+<span class="comment"># Install gh</span>
+<span class="cmd">brew install gh</span></pre>
+        </div>
 
-<span class="comment"># Step 3 — Log in to GitHub</span>
-<span class="cmd">gh auth login</span></pre>
+        <div class="code-block" style="margin-top:12px">
+          <div class="code-top">
+            <span>Step 2b — Install GitHub CLI (Windows)</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="cmd">winget install</span> <span class="flag">--id</span> GitHub.cli</pre>
+        </div>
+
+        <div class="code-block" style="margin-top:12px">
+          <div class="code-top">
+            <span>Step 3 — Log in to GitHub</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="cmd">gh auth login</span></pre>
         </div>
         <div class="tip good" style="margin-top:12px">
           <span class="tip-icon">✅</span>
@@ -706,30 +729,10 @@
       </div>
     </div>
 
-    <!-- 5. CLAUDE.md -->
+    <!-- 5. Firebase -->
     <div class="section">
       <div class="section-header" onclick="toggle(this)">
         <div class="step-num c5">5</div>
-        <div class="step-title">
-          <h2>Download CLAUDE.md</h2>
-          <p>Configuration file — save to your project folder</p>
-        </div>
-        <span class="step-icon">›</span>
-      </div>
-      <div class="section-body" style="padding-top:16px">
-        <a class="link-btn" href="https://accessinfinityuk-my.sharepoint.com/personal/chandrashekhar_accessinfinity_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fchandrashekhar%5Faccessinfinity%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files%2FCLAUDE%2Emd&parent=%2Fpersonal%2Fchandrashekhar%5Faccessinfinity%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files&ga=1" target="_blank">⬇ Download CLAUDE.md from OneDrive</a>
-        <ul class="steps" style="margin-top:12px">
-          <li><span class="bullet"></span>Click the link above to open OneDrive</li>
-          <li><span class="bullet"></span>Download the <strong>CLAUDE.md</strong> file</li>
-          <li><span class="bullet"></span>Save it into your <strong>project folder</strong></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- 6. Firebase -->
-    <div class="section">
-      <div class="section-header" onclick="toggle(this)">
-        <div class="step-num c6">6</div>
         <div class="step-title">
           <h2>Set Up Firebase</h2>
           <p>Wait for Prasad's invite — then install &amp; login</p>
@@ -757,6 +760,38 @@
           <span class="tip-icon">ℹ️</span>
           <span>When asked about <strong>Gemini, Error Analysis</strong> or data sharing — press <strong>N</strong> and hit Enter to skip all of them.</span>
         </div>
+      </div>
+    </div>
+
+    <!-- 6. Scaffold project -->
+    <div class="section">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="step-num c6">6</div>
+        <div class="step-title">
+          <h2>Scaffold your project</h2>
+          <p>Use the <strong>/firebase-poc-scaffold</strong> skill in Claude Desktop</p>
+        </div>
+        <span class="step-icon">›</span>
+      </div>
+      <div class="section-body" style="padding-top:16px">
+        <div class="tip good">
+          <span class="tip-icon">✅</span>
+          <span><strong>No manual setup needed.</strong> The <strong>/firebase-poc-scaffold</strong> skill creates the whole project for you — React + Vite + TS, Tailwind, shadcn/ui, Firebase + emulators, routing, and a starter <code style="background:rgba(0,0,0,0.08);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">CLAUDE.md</code>.</span>
+        </div>
+        <ul class="steps" style="margin-top:14px">
+          <li><span class="bullet"></span>Open <strong>Claude Desktop</strong> in the parent folder where the new project should live.</li>
+          <li><span class="bullet"></span>Type <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">/firebase-poc-scaffold</code> and tell Claude the app name.</li>
+          <li><span class="bullet"></span>Confirm the plan — Claude checks prerequisites, scaffolds the project, and runs lint + build.</li>
+          <li><span class="bullet"></span>Start local dev with <code style="background:var(--soft);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:12px">npm run dev:full</code>.</li>
+        </ul>
+        <div class="code-block" style="margin-top:14px">
+          <div class="code-top">
+            <span>Example prompt</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><span class="cmd">/firebase-poc-scaffold</span> <span class="str">Create a new POC called "task-tracker".</span></pre>
+        </div>
+        <a class="link-btn" href="#" onclick="showTab(document.querySelector('.tab-btn[onclick*=firebase-poc-scaffold]'), 'firebase-poc-scaffold'); return false;" style="margin-top:14px">→ Full /firebase-poc-scaffold details</a>
       </div>
     </div>
 
